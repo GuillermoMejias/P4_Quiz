@@ -140,7 +140,7 @@ exports.playCmd = rl => {
 	const jugarUna = () => {
 		if (toBeResolved.length===0){
 			log(`Fin del juego. Aciertos:  ${score}`);
-			log('No hay nada más que preguntar.');.
+			log('No hay nada más que preguntar.');
 			biglog(score, 'blue');
 			rl.prompt();
 		} else {
