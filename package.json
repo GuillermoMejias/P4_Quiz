@@ -1,0 +1,16 @@
+{
+  "name": "quiz",
+  "version": "1.0.0",
+  "description": "Entrega 2 de CORE",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guillermo Mejías Izquierdo",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.3.1",
+    "figlet": "^1.2.0"
+  }
+}
