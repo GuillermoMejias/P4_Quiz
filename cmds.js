@@ -106,14 +106,14 @@ exports.testCmd = (rl, id) => {
 			const pregunta = quiz.question + '?';
 			rl.question(colorize(pregunta, 'red'), respuesta => {
 				respuesta = respuesta.toLowerCase().trim();
+				respuesta = respuesta.charAt(0).toUpperCase() + respuesta.slice(1);
+
 				if(respuesta === quiz.answer){
-						log('CORRECTO');
-					log('Su respuesta es: ')
+					log('Su respuesta es correcta');
 					biglog("Correcta", "green");
 					rl.prompt();
 				} else {
-						log('INCORRECTO');
-					log('Su respuesta es: ')
+						log('Su respuesta es incorrecta');
 					biglog("Incorrecta", "red");
 					rl.prompt();
 				}
@@ -139,8 +139,8 @@ exports.playCmd = rl => {
 
 	const jugarUna = () => {
 		if (toBeResolved.length===0){
-			let msg = 'Puntuacion: ' + score;
-			biglog(msg, 'blue');
+			log(`Fin del juego. Aciertos:  ${score}`);
+			biglog(score, 'blue');
 			rl.prompt();
 		} else {
 			//Coge una pregunta al azar y la borra del array
@@ -152,22 +152,15 @@ exports.playCmd = rl => {
 			const pregunta = quiz.question + '?';
 			rl.question(colorize(pregunta, 'red'), respuesta => {
 				respuesta = respuesta.toLowerCase().trim();
+				respuesta = respuesta.charAt(0).toUpperCase() + respuesta.slice(1);
 					if(respuesta === quiz.answer){
-						log('CORRECTO');
-						log('Su respuesta es ')
-						biglog("Correcta", "green");
 						score +=1;
-						if(toBeResolved.length !== 0) {
-							log(`Su puntuación actual es: ${score}`);
-						}
+						log(`CORRECTO - Lleva ${score} aciertos.`);
 						jugarUna();
 					} else {
 						log('INCORRECTO');
-						log('Su respuesta es: ')
-						biglog("Incorrecta", "red");
-						log('fin');
-						let msg = 'Puntuacion: ' + score;
-						biglog(msg, 'blue');
+						log(`Fin del juego. Aciertos: ${score}`);
+						biglog(score, 'blue');
 						rl.prompt();
 					}
 			});
