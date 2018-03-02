@@ -2,7 +2,7 @@
  const fs = require('fs');
 
 //Fichero donde se guardan los quizes
-const DB_FILENAME = 'quizes.json';
+const DB_FILENAME = 'quizzes.json';
 
 //Variable que guarda los quizzes
 let quizes = [
