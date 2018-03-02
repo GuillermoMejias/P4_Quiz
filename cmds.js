@@ -107,12 +107,12 @@ exports.testCmd = (rl, id) => {
 			rl.question(colorize(pregunta, 'red'), respuesta => {
 				respuesta = respuesta.toLowerCase().trim();
 				if(respuesta === quiz.answer){
-						LOG('CORRECTO');
+						log('CORRECTO');
 					log('Su respuesta es: ')
 					biglog("Correcta", "green");
 					rl.prompt();
 				} else {
-						LOG('INCORRECTO');
+						log('INCORRECTO');
 					log('Su respuesta es: ')
 					biglog("Incorrecta", "red");
 					rl.prompt();
@@ -153,7 +153,7 @@ exports.playCmd = rl => {
 			rl.question(colorize(pregunta, 'red'), respuesta => {
 				respuesta = respuesta.toLowerCase().trim();
 					if(respuesta === quiz.answer){
-						LOG('CORRECTO');
+						log('CORRECTO');
 						log('Su respuesta es ')
 						biglog("Correcta", "green");
 						score +=1;
@@ -162,7 +162,7 @@ exports.playCmd = rl => {
 						}
 						jugarUna();
 					} else {
-						LOG('INCORRECTO');
+						log('INCORRECTO');
 						log('Su respuesta es: ')
 						biglog("Incorrecta", "red");
 						log('fin');
