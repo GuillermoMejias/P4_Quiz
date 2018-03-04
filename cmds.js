@@ -106,8 +106,8 @@ exports.testCmd = (rl, id) => {
 			const pregunta = quiz.question + '?';
 			rl.question(colorize(pregunta, 'red'), respuesta => {
 				respuesta = respuesta.toLowerCase().trim();
-				respuesta = respuesta.charAt(0).toUpperCase() + respuesta.slice(1);
-				if(respuesta === quiz.answer){
+				answer = quiz.answer.toLowerCase().trim();
+				if(respuesta === answer){
 					log('Su respuesta es correcta.');
 					biglog("Correcta", "green");
 					rl.prompt();
@@ -152,8 +152,8 @@ exports.playCmd = rl => {
 			const pregunta = quiz.question + '?';
 			rl.question(colorize(pregunta, 'red'), respuesta => {
 				respuesta = respuesta.toLowerCase().trim();
-				respuesta = respuesta.charAt(0).toUpperCase() + respuesta.slice(1,respuesta.length);
-					if(respuesta === quiz.answer){
+				answer = quiz.answer.toLowerCase().trim();
+					if(respuesta === answer){
 						score +=1;
 						log(`CORRECTO - Lleva ${score} aciertos.`);
 						jugarUna();
