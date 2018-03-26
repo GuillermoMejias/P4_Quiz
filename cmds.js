@@ -389,7 +389,7 @@ exports.playCmd = rl => {
 	});
 
 
-
+}
 
 
 exports.creditsCmd = rl => {
@@ -404,4 +404,3 @@ exports.quitCmd = rl => {
 	rl.close();
 };
 
-}
