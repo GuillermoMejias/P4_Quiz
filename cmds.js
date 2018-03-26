@@ -395,6 +395,7 @@ exports.playCmd = rl => {
 exports.creditsCmd = rl => {
 	log('Autor de la práctica:');
 	log('Guillermo Mejías');
+	log('GuillermoMejias');
 	rl.prompt();
 };
 
