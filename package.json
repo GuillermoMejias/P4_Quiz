@@ -10,7 +10,9 @@
   "author": "Guillermo Mejías Izquierdo",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^2.3.1",
-    "figlet": "^1.2.0"
+    "chalk": "^2.3.2",
+    "figlet": "^1.2.0",
+    "sequelize": "^4.37.4",
+    "sqlite3": "^4.0.0"
   }
 }
