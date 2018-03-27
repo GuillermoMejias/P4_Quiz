@@ -20,27 +20,6 @@ exports.helpCmd = rl => {
 };
 
 
-exports.listCmd = rl => {
-	/* P2_QUIZ
-	log(`  [${colorize('id', 'magenta')}]: Pregunta`);
-	model.getAll().forEach((quiz, id) => {
-		log(`  [${colorize(id, 'magenta')}]: ${quiz.question}`);
-	});
-	rl.prompt();
-	*/
-	//P3_QUIZ
-	models.quiz.findAll()
-	.each(quiz => {
-		log(`  [${colorize(quiz.id, 'magenta')}]: ${quiz.question}`);
-	})
-	.catch(error => {
-		errorlog(error.message);
-	})
-	.then(() => {
-		rl.prompt();
-	})
-
-};
 
 const validateId = id => {
 
@@ -59,9 +38,17 @@ const validateId = id => {
 };
 
 
+const makeQuestion = (rl, text) => {
+	return new Sequelize.Promise((resolve, reject) => {
+		rl.question(colorize(text, 'red'), answer => {
+			resolve(answer.trim());
+		});
+	});
+};
+
+
 exports.showCmd = (socket, rl, id) => {
 	
-
 	validateId(id)
 	.then(id => models.quiz.findById(id))
 	.then(quiz => {
@@ -79,13 +66,28 @@ exports.showCmd = (socket, rl, id) => {
 };
 
 
-const makeQuestion = (socket, rl, text) => {
-	return new Sequelize.Promise((resolve, reject) => {
-		rl.question(colorize(text, 'red'), answer => {
-			resolve(answer.trim());
-		});
+exports.listCmd = (socket, rl) => {
+	/* P2_QUIZ
+	log(`  [${colorize('id', 'magenta')}]: Pregunta`);
+	model.getAll().forEach((quiz, id) => {
+		log(`  [${colorize(id, 'magenta')}]: ${quiz.question}`);
 	});
+	rl.prompt();
+	*/
+	//P3_QUIZ
+	models.quiz.findAll()
+	.each(quiz => {
+		log(socket, `  [${colorize(quiz.id, 'magenta')}]: ${quiz.question}`);
+	})
+	.catch(error => {
+		errorlog(socket, error.message);
+	})
+	.then(() => {
+		rl.prompt();
+	})
+
 };
+
 
 
 exports.addCmd = (socket, rl) => {
